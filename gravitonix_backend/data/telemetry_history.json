@@ -1,0 +1,32 @@
+[
+  {
+    "timestamp": "2026-11-21T21:40:00.000Z",
+    "stardate": "SD-2026.832",
+    "fluxCoherence": 99.88,
+    "coreTempK": 4.22,
+    "currentG": 0.00,
+    "casimirOutputMW": 1210000,
+    "magneticContainmentPct": 99.98,
+    "octaCoreStatus": "NOMINAL"
+  },
+  {
+    "timestamp": "2026-11-21T21:45:00.000Z",
+    "stardate": "SD-2026.832",
+    "fluxCoherence": 99.91,
+    "coreTempK": 4.21,
+    "currentG": 0.00,
+    "casimirOutputMW": 1210400,
+    "magneticContainmentPct": 99.99,
+    "octaCoreStatus": "NOMINAL"
+  },
+  {
+    "timestamp": "2026-11-21T21:50:00.000Z",
+    "stardate": "SD-2026.832",
+    "fluxCoherence": 99.86,
+    "coreTempK": 4.23,
+    "currentG": -0.10,
+    "casimirOutputMW": 1209800,
+    "magneticContainmentPct": 99.97,
+    "octaCoreStatus": "NOMINAL"
+  }
+]

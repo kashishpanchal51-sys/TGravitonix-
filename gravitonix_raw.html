@@ -1,0 +1,732 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAVITONIX · Defy Physics, Experience Weightlessness</title>
+  <meta name="description" content="State-of-the-art futuristic anti-gravity dynamics, reactionless propulsion, floating megacities, and real-time gravity field simulator.">
+  
+  <!-- Google Fonts: Space Grotesk & Orbitron & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            void: '#030712',
+            space: '#070a1e',
+            cosmic: '#101538',
+            cyanGlow: '#22d3ee',
+            purpleGlow: '#a855f7',
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            space: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Sci-Fi Design System & Micro-animations -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#030712] text-gray-100 font-space selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden min-h-screen">
+
+  <!-- Background Ambience & Grid Overlay -->
+  <div class="fixed inset-0 pointer-events-none z-0 cosmic-grid opacity-60"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 cosmic-radial-glow"></div>
+  <div class="fixed top-1/4 -left-48 w-96 h-96 rounded-full nebula-glow-purple pointer-events-none blur-3xl z-0"></div>
+  <div class="fixed bottom-1/4 -right-48 w-96 h-96 rounded-full nebula-glow-cyan pointer-events-none blur-3xl z-0"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HOLOGRAPHIC NAVIGATION BAR
+       ═══════════════════════════════════════════════════════════════════ -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-cyan-500/20 px-4 sm:px-8 py-3 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo Brand -->
+      <a href="#hero-section" class="flex items-center gap-3 group">
+        <div class="relative w-9 h-9 rounded-lg border border-cyan-400/50 bg-cyan-950/40 flex items-center justify-center glow-border-cyan group-hover:scale-105 transition-transform">
+          <span class="text-cyan-400 font-black font-orbitron text-lg group-hover:rotate-45 transition-transform duration-500">⟁</span>
+          <div class="ring-emitter w-7 h-7"></div>
+        </div>
+        <div>
+          <span class="font-orbitron font-extrabold text-lg sm:text-xl tracking-wider text-white text-glow-cyan">
+            GRAVITON<span class="text-cyan-400">IX</span>
+          </span>
+          <span class="hidden sm:inline-block ml-2 text-[10px] font-mono tracking-widest text-purple-400 border border-purple-500/30 px-1.5 py-0.5 rounded bg-purple-950/40">
+            NULL-G LABS
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 font-mono text-xs tracking-widest">
+        <a href="#hero-section" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+          <span class="text-cyan-500">01.</span> SINGULARITY
+        </a>
+        <a href="#gravity-chamber-section" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+          <span class="text-purple-400">02.</span> CHAMBER SIMULATOR
+        </a>
+        <a href="#applications-section" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+          <span class="text-cyan-400">03.</span> APPLICATIONS
+        </a>
+        <a href="#telemetry-section" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+          <span class="text-purple-400">04.</span> TELEMETRY
+        </a>
+      </nav>
+
+      <!-- Right Action Hub: Gravity Beacon & Audio Synth -->
+      <div class="flex items-center gap-3">
+        <!-- Live Gravity Metric Badge in Nav -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/60 border border-cyan-500/30 font-mono text-xs shadow-inner">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span class="text-gray-400">G-FIELD:</span>
+          <span id="header-g-telemetry" class="text-cyan-300 font-bold tracking-wider">0.00 G</span>
+        </div>
+
+        <!-- Audio Synthesizer Toggle Button -->
+        <button id="audio-toggle-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-space/70 border border-purple-500/40 text-xs font-mono text-gray-300 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-lg active:scale-95" title="Toggle Sci-Fi Ambient Sound Effects">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+          </svg>
+          <span class="hidden sm:inline">AUDIO: MUTED</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       1. HERO SECTION: "DEFY PHYSICS, EXPERIENCE WEIGHTLESSNESS"
+       Interactive Particle Background + 3D Orbital Singularity Globe
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section id="hero-section" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden z-10">
+    <!-- Interactive Canvas Layer for Particles & 3D Singularity Globe -->
+    <div class="absolute inset-0 z-0">
+      <canvas id="hero-canvas" class="w-full h-full block"></canvas>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Bold Headline & Interactivity -->
+      <div class="lg:col-span-7 space-y-6 text-left">
+        
+        <!-- Status Indicator Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-400/40 text-xs font-mono font-semibold text-cyan-300 tracking-wider shadow-lg float-subtle">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span>ANTIGRAVITY HARMONICS ONLINE</span>
+          <span class="text-purple-400">· MK-VII</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-6xl xl:text-7xl font-orbitron font-black tracking-tight leading-[1.08] text-white">
+          DEFY <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 text-glow-cyan">PHYSICS.</span><br>
+          EXPERIENCE<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-300 text-glow-purple">WEIGHTLESSNESS.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-gray-300 max-w-xl font-light leading-relaxed">
+          Manipulate fundamental spacetime curvature. We harvest microscopic singularities to nullify mass inertia, unlock reactionless propulsion, and elevate civilization above planetary gravity wells.
+        </p>
+
+        <!-- CTA Buttons & Quick Actions -->
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          <button id="btn-enter-chamber" class="px-6 sm:px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-orbitron font-extrabold text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_0_30px_rgba(34,211,238,0.45)] hover:shadow-[0_0_45px_rgba(34,211,238,0.7)] hover:scale-105 active:scale-95 flex items-center gap-2">
+            <span>ENTER SIMULATOR</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+
+          <button id="btn-explore-apps" class="px-6 py-3.5 rounded-xl glass-panel text-white font-orbitron font-semibold text-sm tracking-wider uppercase hover:border-cyan-400/80 hover:text-cyan-300 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95">
+            APPLICATIONS
+          </button>
+
+          <button id="btn-quick-invert" class="px-4 py-3.5 rounded-xl border border-purple-500/40 bg-purple-950/30 hover:border-purple-400 text-xs font-mono text-purple-300 hover:text-white transition-all flex items-center gap-2 active:scale-95" title="Quickly invert gravity vector">
+            <span>⇄ INVERT G</span>
+          </button>
+        </div>
+
+        <!-- Telemetry Stats Ticker -->
+        <div class="pt-6 grid grid-cols-3 gap-4 border-t border-cyan-500/15 max-w-lg">
+          <div>
+            <div class="text-[11px] font-mono text-gray-400">MASS COEFFICIENT</div>
+            <div class="text-xl sm:text-2xl font-mono font-bold text-cyan-400">0.0001%</div>
+          </div>
+          <div>
+            <div class="text-[11px] font-mono text-gray-400">WARP VELOCITY</div>
+            <div class="text-xl sm:text-2xl font-mono font-bold text-purple-400">0.94c</div>
+          </div>
+          <div>
+            <div class="text-[11px] font-mono text-gray-400">FLUX COHERENCE</div>
+            <div id="telemetry-flux" class="text-xl sm:text-2xl font-mono font-bold text-cyan-300">99.88%</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Floating Sci-Fi HUD Hologram Widget -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-md p-6 rounded-2xl glass-panel-elevated hud-corner-box float-slow">
+          
+          <!-- Hologram Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-cyan-500/20">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+              <span class="font-orbitron text-xs font-bold text-white tracking-wider">HARMONIC SINGULARITY</span>
+            </div>
+            <span class="font-mono text-[10px] text-cyan-400 px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">
+              ACTIVE
+            </span>
+          </div>
+
+          <!-- Holographic Display Content -->
+          <div class="py-6 space-y-4">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-gray-400">CONTAINMENT CORE:</span>
+              <span class="text-cyan-300 font-bold">TOROIDAL MK-7</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-gray-400">GRAVITON DENSITY:</span>
+              <span class="text-purple-400 font-bold">4.82 × 10²⁴ / m³</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-gray-400">CORE TEMPERATURE:</span>
+              <span id="telemetry-temp" class="text-sky-300 font-bold">4.22 K</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-gray-400">CHRONO-DATE:</span>
+              <span id="telemetry-stardate" class="text-gray-300 font-bold">SD-2026.832</span>
+            </div>
+
+            <!-- Quantum Waveform Graphic -->
+            <div class="mt-4 p-3 rounded-lg bg-black/60 border border-cyan-500/20 font-mono text-[10px] space-y-2">
+              <div class="flex justify-between text-gray-400">
+                <span>WARP METRIC HARMONICS</span>
+                <span class="text-cyan-400">STABLE</span>
+              </div>
+              <div class="h-8 flex items-end gap-1">
+                <div class="w-1.5 bg-cyan-400 rounded-t animate-pulse h-6"></div>
+                <div class="w-1.5 bg-purple-400 rounded-t animate-pulse h-4" style="animation-delay: 0.1s"></div>
+                <div class="w-1.5 bg-cyan-300 rounded-t animate-pulse h-7" style="animation-delay: 0.2s"></div>
+                <div class="w-1.5 bg-sky-400 rounded-t animate-pulse h-3" style="animation-delay: 0.3s"></div>
+                <div class="w-1.5 bg-purple-500 rounded-t animate-pulse h-8" style="animation-delay: 0.4s"></div>
+                <div class="w-1.5 bg-cyan-400 rounded-t animate-pulse h-5" style="animation-delay: 0.5s"></div>
+                <div class="w-1.5 bg-blue-400 rounded-t animate-pulse h-7" style="animation-delay: 0.6s"></div>
+                <div class="w-1.5 bg-purple-300 rounded-t animate-pulse h-4" style="animation-delay: 0.7s"></div>
+                <div class="w-1.5 bg-cyan-400 rounded-t animate-pulse h-6" style="animation-delay: 0.8s"></div>
+                <div class="w-1.5 bg-pink-400 rounded-t animate-pulse h-5" style="animation-delay: 0.9s"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Card Footer -->
+          <div class="pt-3 border-t border-cyan-500/20 flex items-center justify-between text-[11px] font-mono text-gray-400">
+            <span>DRAG & MOVE MOUSE TO WARP SPHERES</span>
+            <span class="text-cyan-400 font-bold">✦ ONLINE</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       2. INTERACTIVE WIDGET: GRAVITY SIMULATOR SLIDER & PHYSICS CHAMBER
+       Users adjust gravity slider (-2.0G to +3.0G), making objects float,
+       drift weightlessly, bounce, or smash to the ceiling/floor!
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section id="gravity-chamber-section" class="relative py-20 px-4 sm:px-8 z-10 border-t border-b border-cyan-500/20 bg-space/40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto space-y-10">
+
+      <!-- Section Title & Description -->
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/50 border border-purple-500/40 font-mono text-xs text-purple-300">
+          <span>INTERACTIVE PHYSICS CHAMBER</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white text-glow-cyan">
+          QUANTUM GRAVITY <span class="text-cyan-400">CONTROLLER</span>
+        </h2>
+        <p class="text-gray-300 text-sm sm:text-base font-light">
+          Manipulate local metric curvature in real time. Shift the slider below to experience inverted negative gravity (upward thrust), true weightless zero-g drift, or high-density hypergravity. Drag and throw objects inside the chamber!
+        </p>
+      </div>
+
+      <!-- Main Simulator Console Box -->
+      <div class="rounded-3xl glass-panel-elevated p-6 sm:p-10 border border-cyan-500/30 relative overflow-hidden shadow-2xl">
+        
+        <!-- Console Control Panel (Header & Slider) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-8 border-b border-cyan-500/20">
+          
+          <!-- Left: Big Metric Readout & Dynamic Status -->
+          <div class="lg:col-span-5 space-y-3">
+            <div class="text-xs font-mono uppercase text-gray-400 tracking-wider">LOCAL ACCELERATION VECTOR:</div>
+            <div class="flex items-baseline gap-4">
+              <span id="gravity-readout" class="text-4xl sm:text-5xl font-mono font-black tracking-wider text-cyan-300 text-glow-cyan">
+                0.00 G
+              </span>
+            </div>
+            <div>
+              <span id="gravity-status-badge" class="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold tracking-widest rounded-full border bg-cyan-950/60 border-cyan-500/50 text-cyan-300">
+                TRUE ZERO-G WEIGHTLESS DRIFT [EQUILIBRIUM]
+              </span>
+            </div>
+            <p id="gravity-status-desc" class="text-xs font-mono text-gray-400 pt-1">
+              Microgravity null-state achieved. Inertia is preserved without gravitational potential well.
+            </p>
+          </div>
+
+          <!-- Right: Interactive Slider & Quick Presets -->
+          <div class="lg:col-span-7 space-y-5">
+            
+            <!-- Slider Header & Range Bounds -->
+            <div class="flex justify-between items-center font-mono text-xs">
+              <span class="text-pink-400 font-bold">-2.00 G (INVERTED LIFT)</span>
+              <span class="text-cyan-300 font-bold">0.00 G (ZERO-G)</span>
+              <span class="text-emerald-400 font-bold">1.00 G (EARTH)</span>
+              <span class="text-amber-400 font-bold">+3.00 G (HYPER-G)</span>
+            </div>
+
+            <!-- Custom Styled Gravity Slider -->
+            <div class="py-2">
+              <input 
+                id="gravity-slider" 
+                type="range" 
+                min="-2.00" 
+                max="3.00" 
+                step="0.05" 
+                value="0.00" 
+                class="gravity-range-input cursor-pointer"
+                aria-label="Adjust local gravity slider"
+              >
+            </div>
+
+            <!-- Quick Preset Buttons -->
+            <div class="flex flex-wrap items-center gap-2 pt-2">
+              <span class="text-xs font-mono text-gray-400 mr-2">PRESETS:</span>
+              <button data-g="-2.00" class="gravity-preset-btn px-3 py-1 rounded bg-black/50 border border-pink-500/40 text-pink-300 hover:border-pink-400 font-mono text-xs transition-all active:scale-95">
+                ▲ -2.0G Invert
+              </button>
+              <button data-g="0.00" class="gravity-preset-btn px-3 py-1 rounded bg-cyan-500/20 border border-cyan-400 text-white font-mono text-xs transition-all active:scale-95 font-bold">
+                ● 0.0G Zero-G
+              </button>
+              <button data-g="0.16" class="gravity-preset-btn px-3 py-1 rounded bg-black/50 border border-sky-500/40 text-sky-300 hover:border-sky-400 font-mono text-xs transition-all active:scale-95">
+                ☾ 0.16G Moon
+              </button>
+              <button data-g="0.38" class="gravity-preset-btn px-3 py-1 rounded bg-black/50 border border-orange-500/40 text-orange-300 hover:border-orange-400 font-mono text-xs transition-all active:scale-95">
+                ♂ 0.38G Mars
+              </button>
+              <button data-g="1.00" class="gravity-preset-btn px-3 py-1 rounded bg-black/50 border border-emerald-500/40 text-emerald-300 hover:border-emerald-400 font-mono text-xs transition-all active:scale-95">
+                ⊕ 1.00G Earth
+              </button>
+              <button data-g="3.00" class="gravity-preset-btn px-3 py-1 rounded bg-black/50 border border-amber-500/40 text-amber-300 hover:border-amber-400 font-mono text-xs transition-all active:scale-95">
+                ▼ 3.00G Hyper
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Chamber Physics Simulation Canvas -->
+        <div class="mt-8 relative rounded-2xl overflow-hidden border border-cyan-500/30 bg-black/80 shadow-inner">
+          
+          <!-- Top HUD Boundary Marker -->
+          <div class="absolute top-2 left-4 right-4 flex justify-between items-center pointer-events-none z-10 text-[10px] font-mono text-gray-500">
+            <span class="flex items-center gap-1.5 text-cyan-400">
+              <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
+              UPPER CONTAINMENT BOUND · LEVITATION CEILING
+            </span>
+            <span class="hidden sm:inline text-purple-400">CLICK & DRAG OBJECTS TO TOSS</span>
+          </div>
+
+          <!-- The Active Canvas -->
+          <canvas id="physics-canvas" class="w-full h-[520px] block"></canvas>
+
+          <!-- Bottom HUD Boundary Marker -->
+          <div class="absolute bottom-2 left-4 right-4 flex justify-between items-center pointer-events-none z-10 text-[10px] font-mono text-gray-500">
+            <span class="flex items-center gap-1.5 text-purple-400">
+              <span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+              LOWER CONTAINMENT BOUND · GRAVITY FLOOR
+            </span>
+            <span class="text-cyan-400">CLICK EMPTY CANVAS FOR GRAVITON SHOCKWAVE</span>
+          </div>
+
+        </div>
+
+        <!-- Chamber Control Toolbar (Spawning, Shockwaves, Vortex, Reset) -->
+        <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-cyan-500/20 text-xs font-mono">
+          <div class="flex flex-wrap items-center gap-3">
+            <button id="btn-spawn-obj" class="px-3.5 py-2 rounded-lg bg-cyan-950/50 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 transition-all active:scale-95 flex items-center gap-2">
+              <span>+ SPAWN MATTER POD</span>
+            </button>
+            <button id="btn-graviton-pulse" class="px-3.5 py-2 rounded-lg bg-purple-950/50 border border-purple-500/40 hover:border-purple-400 text-purple-300 transition-all active:scale-95 flex items-center gap-2">
+              <span>⚡ EMIT SHOCKWAVE</span>
+            </button>
+            <button id="btn-vortex-toggle" class="px-3.5 py-2 rounded-lg bg-black/60 border border-gray-600 hover:border-purple-400 text-gray-300 transition-all active:scale-95 flex items-center gap-2">
+              <span>🌀 SINGULARITY VORTEX</span>
+            </button>
+          </div>
+
+          <button id="btn-reset-chamber" class="px-3.5 py-2 rounded-lg bg-black/60 border border-red-500/30 hover:border-red-400 text-red-300 transition-all active:scale-95">
+            ↺ RESET CHAMBER
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       3. FEATURES SECTION: ANTI-GRAVITY APPLICATIONS GRID
+       Space Travel, Architecture, Transportation, Energy Core, Bio, Shields
+       Hover effects make the cards float higher with 3D tilt & thruster glow
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section id="applications-section" class="relative py-24 px-4 sm:px-8 z-10">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/40 font-mono text-xs text-cyan-300">
+          <span>DEPLOYED TECHNOLOGIES</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white text-glow-cyan">
+          REAL-WORLD <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">APPLICATIONS</span>
+        </h2>
+        <p class="text-gray-300 text-sm sm:text-base font-light">
+          Hover over each module to engage localized thrusters and examine technical blueprints. Notice cards levitate higher as gravity decreases!
+        </p>
+      </div>
+
+      <!-- Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Card 1: Space Travel -->
+        <div data-app-id="space-travel" class="app-card cursor-pointer rounded-2xl glass-panel-elevated border border-cyan-500/20 overflow-hidden flex flex-col justify-between group float-subtle">
+          <div>
+            <!-- Card Image Container -->
+            <div class="h-52 w-full overflow-hidden relative">
+              <img src="assets/antigrav_spacecraft.jpg" alt="Anti-gravity deep space vessel" class="app-card-img w-full h-full object-cover transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#070a1e] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-mono font-bold tracking-widest text-cyan-300 bg-black/70 border border-cyan-500/40 rounded">
+                PROPULSION · TIER-5
+              </span>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-purple-400">
+                <span>REACTIONLESS WARP</span>
+                <span>0.94c SUBLIGHT</span>
+              </div>
+              <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-cyan-300 transition-colors">
+                Deep Space Travel
+              </h3>
+              <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed">
+                Asymmetric spacetime metric compression permits interplanetary transit with zero propellant, zero inertial dampening lag, and instant acceleration.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card Levitation Thruster Bottom Glow -->
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t border-cyan-500/15 flex items-center justify-between text-xs font-mono text-cyan-400">
+              <span>EXPLORE BLUEPRINT</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <div class="levitation-thruster h-1 w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30 mt-3 transition-opacity"></div>
+          </div>
+        </div>
+
+        <!-- Card 2: Floating Architecture -->
+        <div data-app-id="architecture" class="app-card cursor-pointer rounded-2xl glass-panel-elevated border border-purple-500/20 overflow-hidden flex flex-col justify-between group float-medium">
+          <div>
+            <!-- Card Image Container -->
+            <div class="h-52 w-full overflow-hidden relative">
+              <img src="assets/antigrav_architecture.jpg" alt="Levitating floating city architecture" class="app-card-img w-full h-full object-cover transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#070a1e] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-mono font-bold tracking-widest text-purple-300 bg-black/70 border border-purple-500/40 rounded">
+                CIVIL ENGINEERING
+              </span>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
+                <span>STRATOSPHERIC CITADELS</span>
+                <span>14,000 M ALTITUDE</span>
+              </div>
+              <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-purple-300 transition-colors">
+                Floating Architecture
+              </h3>
+              <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed">
+                Suspension coils lift multi-million ton skyscraper citadels above tectonic plates, eliminating seismic risks while revolutionizing urban density.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t border-purple-500/15 flex items-center justify-between text-xs font-mono text-purple-400">
+              <span>EXPLORE BLUEPRINT</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <div class="levitation-thruster h-1 w-full bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-30 mt-3 transition-opacity"></div>
+          </div>
+        </div>
+
+        <!-- Card 3: Levitated Transportation -->
+        <div data-app-id="transportation" class="app-card cursor-pointer rounded-2xl glass-panel-elevated border border-cyan-500/20 overflow-hidden flex flex-col justify-between group float-slow">
+          <div>
+            <!-- Card Image Container -->
+            <div class="h-52 w-full overflow-hidden relative">
+              <img src="assets/antigrav_transit.jpg" alt="High speed anti-gravity magnetic train pod" class="app-card-img w-full h-full object-cover transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#070a1e] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-mono font-bold tracking-widest text-cyan-300 bg-black/70 border border-cyan-500/40 rounded">
+                TRANSIT NETWORKS
+              </span>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-purple-400">
+                <span>VACUUM MAG-GRAV</span>
+                <span>MACH 7.8 VELOCITY</span>
+              </div>
+              <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-cyan-300 transition-colors">
+                Hyper-Speed Transit
+              </h3>
+              <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed">
+                Zero-friction gravitational guideways propel passenger capsules between continents in minutes without sonic turbulence or rail erosion.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t border-cyan-500/15 flex items-center justify-between text-xs font-mono text-cyan-400">
+              <span>EXPLORE BLUEPRINT</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <div class="levitation-thruster h-1 w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30 mt-3 transition-opacity"></div>
+          </div>
+        </div>
+
+        <!-- Card 4: Quantum Graviton Reactor -->
+        <div data-app-id="reactor-core" class="app-card cursor-pointer rounded-2xl glass-panel-elevated border border-purple-500/20 overflow-hidden flex flex-col justify-between group float-subtle">
+          <div>
+            <div class="h-52 w-full overflow-hidden relative">
+              <img src="assets/antigrav_reactor.jpg" alt="Singularity reactor core" class="app-card-img w-full h-full object-cover transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#070a1e] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-mono font-bold tracking-widest text-purple-300 bg-black/70 border border-purple-500/40 rounded">
+                ENERGY MATRIX
+              </span>
+            </div>
+
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
+                <span>ZERO-POINT VACUUM</span>
+                <span>1.21 TERA-WATTS</span>
+              </div>
+              <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-purple-300 transition-colors">
+                Singularity Reactor Core
+              </h3>
+              <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed">
+                Bound micro-black hole event horizon provides boundless zero-point clean energy while producing the negative mass necessary for levitation grids.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t border-purple-500/15 flex items-center justify-between text-xs font-mono text-purple-400">
+              <span>EXPLORE BLUEPRINT</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <div class="levitation-thruster h-1 w-full bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-30 mt-3 transition-opacity"></div>
+          </div>
+        </div>
+
+        <!-- Card 5: Zero-G Bio-Synthesis -->
+        <div data-app-id="bio-synthesis" class="app-card cursor-pointer rounded-2xl glass-panel-elevated border border-cyan-500/20 overflow-hidden flex flex-col justify-between group float-medium">
+          <div>
+            <div class="h-52 w-full overflow-hidden relative bg-[#090d29] flex items-center justify-center p-6">
+              <div class="w-28 h-28 rounded-full border-2 border-cyan-400/60 flex items-center justify-center relative">
+                <div class="w-16 h-16 rounded-full border border-purple-400 animate-spin"></div>
+                <span class="absolute text-cyan-300 font-mono text-2xl animate-pulse">⚛</span>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#070a1e] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-mono font-bold tracking-widest text-cyan-300 bg-black/70 border border-cyan-500/40 rounded">
+                MOLECULAR BIOLOGY
+              </span>
+            </div>
+
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-purple-400">
+                <span>NULL SEDIMENTATION</span>
+                <span>100% CRYSTAL PURITY</span>
+              </div>
+              <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-cyan-300 transition-colors">
+                Zero-G Bio-Synthesis
+              </h3>
+              <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed">
+                Absence of gravity-driven sedimentation enables cellular tissue cloning and flawless protein crystallization impossible in planetary atmospheres.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t border-cyan-500/15 flex items-center justify-between text-xs font-mono text-cyan-400">
+              <span>EXPLORE BLUEPRINT</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <div class="levitation-thruster h-1 w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30 mt-3 transition-opacity"></div>
+          </div>
+        </div>
+
+        <!-- Card 6: Gravitational Kinetic Shields -->
+        <div data-app-id="kinetic-shields" class="app-card cursor-pointer rounded-2xl glass-panel-elevated border border-purple-500/20 overflow-hidden flex flex-col justify-between group float-slow">
+          <div>
+            <div class="h-52 w-full overflow-hidden relative bg-[#0a0f2e] flex items-center justify-center p-6">
+              <div class="w-32 h-32 rounded-full border border-dashed border-cyan-400/60 spin-orbit flex items-center justify-center">
+                <div class="w-20 h-20 rounded-full border border-purple-500/60 spin-orbit-reverse"></div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#070a1e] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 text-[11px] font-mono font-bold tracking-widest text-purple-300 bg-black/70 border border-purple-500/40 rounded">
+                DEFENSE & SHIELDING
+              </span>
+            </div>
+
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
+                <span>REPULSIVE GRADIENT</span>
+                <span>DEBRIS DEFLECTION</span>
+              </div>
+              <h3 class="text-xl font-orbitron font-bold text-white group-hover:text-purple-300 transition-colors">
+                Kinetic Repulsion Shields
+              </h3>
+              <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed">
+                A localized repulsive gravity gradient redirects incoming hypersonic orbital debris and ballistic objects harmlessly around colonies.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t border-purple-500/15 flex items-center justify-between text-xs font-mono text-purple-400">
+              <span>EXPLORE BLUEPRINT</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <div class="levitation-thruster h-1 w-full bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-30 mt-3 transition-opacity"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       4. TELEMETRY & SCIENCE FOUNDATION SECTION
+       ═══════════════════════════════════════════════════════════════════ -->
+  <section id="telemetry-section" class="relative py-20 px-4 sm:px-8 z-10 border-t border-cyan-500/20 bg-black/60">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/40 font-mono text-xs text-cyan-300">
+          <span>THEORETICAL FOUNDATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-orbitron font-extrabold text-white text-glow-cyan">
+          TENSOR CALCULUS & NEGATIVE MASS INVERSION
+        </h2>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Einstein’s Field Equations define spacetime curvature in response to stress-energy tensor <code class="text-cyan-400 bg-cyan-950/60 px-1.5 py-0.5 rounded font-mono">T_μν</code>. By engineering Casimir vacuum fluctuations and exotic polariton states, Gravitonix induces effective negative mass density, flipping the signs of the geodesic acceleration equation.
+        </p>
+
+        <div class="p-4 rounded-xl bg-space/80 border border-cyan-500/30 font-mono text-xs space-y-2">
+          <div class="text-cyan-400 font-bold">GEODESIC EQUATION IN FIELD NULL-STATE:</div>
+          <div class="text-purple-300 font-bold text-sm tracking-wide">
+            d²x^μ / dτ² + Γ^μ_αβ (dx^α / dτ)(dx^β / dτ) = ∇_μ (Φ_graviton) → 0
+          </div>
+          <div class="text-gray-400 text-[11px] pt-1">
+            * Local inertial force completely cancelled; zero g-force experienced by matter inside field envelope.
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 grid grid-cols-2 gap-4 font-mono">
+        <div class="p-5 rounded-xl glass-panel-elevated border border-cyan-500/30">
+          <div class="text-cyan-400 text-xs font-bold mb-1">01. INERTIAL DAMPENING</div>
+          <div class="text-2xl font-black text-white">99.999%</div>
+          <p class="text-gray-400 text-xs mt-2">Zero g-shock during instant 10,000 km/h vector transitions.</p>
+        </div>
+        <div class="p-5 rounded-xl glass-panel-elevated border border-purple-500/30">
+          <div class="text-purple-400 text-xs font-bold mb-1">02. POWER FOOTPRINT</div>
+          <div class="text-2xl font-black text-white">0.00 W/kg</div>
+          <p class="text-gray-400 text-xs mt-2">Self-sustaining zero-point Casimir resonance once initialized.</p>
+        </div>
+        <div class="p-5 rounded-xl glass-panel-elevated border border-sky-500/30">
+          <div class="text-sky-400 text-xs font-bold mb-1">03. COUPLING RADIUS</div>
+          <div class="text-2xl font-black text-white">2.4 km</div>
+          <p class="text-gray-400 text-xs mt-2">Maximum effective radius for a single Mk-VII graviton node.</p>
+        </div>
+        <div class="p-5 rounded-xl glass-panel-elevated border border-emerald-500/30">
+          <div class="text-emerald-400 text-xs font-bold mb-1">04. SYSTEM REDUNDANCY</div>
+          <div class="text-2xl font-black text-white">OCTA-CORE</div>
+          <p class="text-gray-400 text-xs mt-2">Eight-tier fail-safe failsafe isolation prevents abrupt descent.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FOOTER: FUTURISTIC SCI-FI CREDITS & TELEMETRY STATUS
+       ═══════════════════════════════════════════════════════════════════ -->
+  <footer class="relative py-12 px-4 sm:px-8 z-10 border-t border-cyan-500/20 bg-[#02050e] font-mono text-xs">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="text-cyan-400 font-orbitron font-extrabold text-xl">GRAVITONIX</span>
+        <span class="text-gray-500">|</span>
+        <span class="text-gray-400">ADVANCED SPACETIME RESEARCH DIVISION · ALL RIGHTS RESERVED</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-gray-400">
+        <span class="hover:text-cyan-400 cursor-pointer transition-colors">PRIVACY MATRIX</span>
+        <span class="hover:text-cyan-400 cursor-pointer transition-colors">FIELD PROTOCOLS</span>
+        <span class="hover:text-cyan-400 cursor-pointer transition-colors">QUANTUM REPO</span>
+        <span class="text-cyan-400 font-bold">STATUS: NOMINAL</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       INTERACTIVE MODAL FOR APPLICATION BLUEPRINTS
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div id="tech-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"></div>
+    
+    <!-- Modal Dialog Box -->
+    <div class="relative w-full max-w-2xl rounded-2xl glass-panel-elevated border border-cyan-500/40 shadow-2xl z-10 overflow-hidden transform transition-all my-8">
+      <!-- Close Button -->
+      <button id="modal-close-btn" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 border border-cyan-500/40 text-cyan-400 hover:text-white hover:border-cyan-300 flex items-center justify-center transition-all font-mono text-lg font-bold">
+        ✕
+      </button>
+
+      <!-- Dynamic Content Injection Target -->
+      <div id="tech-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App -->
+  <script src="app.js"></script>
+</body>
+</html>
+

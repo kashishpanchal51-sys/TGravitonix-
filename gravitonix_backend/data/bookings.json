@@ -1,0 +1,82 @@
+{
+  "experiences": [
+    {
+      "id": "exp-suborbital-express",
+      "title": "Suborbital Mag-Grav Trans-Pacific Flight",
+      "route": "Tokyo Null-G Spaceport ➔ Neo-San Francisco Hub",
+      "duration": "32 Minutes",
+      "cruisingSpeed": "Mach 7.8 (9,550 km/h)",
+      "altitude": "42,000 meters",
+      "comfortG": "1.00 G Regulated",
+      "priceUSD": 2850,
+      "badge": "COMMERCIAL TRANSIT",
+      "departureFrequency": "Every 45 Minutes"
+    },
+    {
+      "id": "exp-orbital-weightlessness",
+      "title": "Orbital Apex Pure Null-G Experience",
+      "route": "Low Earth Orbit (LEO) Orbital Vector",
+      "duration": "3 Hours 30 Minutes",
+      "cruisingSpeed": "Orbital Free-Fall",
+      "altitude": "360,000 meters",
+      "comfortG": "0.00 G Sustained",
+      "priceUSD": 9500,
+      "badge": "ASTRONAUT TIER",
+      "departureFrequency": "Daily 09:00 & 16:00 UTC"
+    },
+    {
+      "id": "exp-cloud-citadel-vip",
+      "title": "Titan Cloud Citadel Stratospheric Stay",
+      "route": "Pacific Stratosphere Levitation Platform 01",
+      "duration": "24 Hours (Overnight Luxury Levitation)",
+      "cruisingSpeed": "Stationary Hover",
+      "altitude": "14,000 meters",
+      "comfortG": "0.85 G Low-Stress Luxury",
+      "priceUSD": 14200,
+      "badge": "EXCLUSIVE RESIDENCE",
+      "departureFrequency": "Bi-Weekly Fridays"
+    },
+    {
+      "id": "exp-chamber-research",
+      "title": "Null-G Quantum Chamber Laboratory Slot",
+      "route": "Gravitonix Facility B · Chamber #4",
+      "duration": "4 Hours Supervised Testing",
+      "cruisingSpeed": "Controlled Physics Sandbox",
+      "altitude": "Ground Facility",
+      "comfortG": "User Variable (-2.0G to +3.0G)",
+      "priceUSD": 4500,
+      "badge": "ACADEMIC & R&D",
+      "departureFrequency": "Scheduled by Approval"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "BK-2026-9812",
+      "experienceId": "exp-orbital-weightlessness",
+      "passengerName": "Dr. Elena Vance",
+      "email": "elena.vance@blackmesa.org",
+      "clearanceLevel": "LEVEL_4_COMMAND",
+      "date": "2026-12-05",
+      "timeSlot": "09:00 UTC",
+      "seatNumber": "APEX-01A",
+      "status": "CONFIRMED",
+      "qrToken": "GV-ORB-2026-9812-VANCE-AUTH",
+      "medicalClearance": true,
+      "notes": "Microgravity cellular bio-synthesis research observation."
+    },
+    {
+      "id": "BK-2026-7734",
+      "experienceId": "exp-suborbital-express",
+      "passengerName": "Aiden Cross",
+      "email": "aiden.cross@synthetica.io",
+      "clearanceLevel": "LEVEL_1_CITIZEN",
+      "date": "2026-11-28",
+      "timeSlot": "14:15 UTC",
+      "seatNumber": "POD-07F",
+      "status": "CONFIRMED",
+      "qrToken": "GV-SUB-2026-7734-CROSS-AUTH",
+      "medicalClearance": true,
+      "notes": "Business transit pass."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "space-travel",
+    "title": "Interstellar Metric Manipulation & Warp Drives",
+    "category": "DEEP SPACE EXPLORATION · TIER-5",
+    "img": "assets/antigrav_spacecraft.jpg",
+    "metric1": "0.94c Peak Sub-Warp Velocity",
+    "metric2": "0.00 G Internal Inertial Drag",
+    "desc": "By curving the local metric tensor into an asymmetric Alcubierre bubble, our vessels expand spacetime behind the craft while compressing spacetime ahead. Ships navigate interplanetary distances in hours with zero chemical propellant and zero G-strain on human crews.",
+    "status": "OPERATIONAL",
+    "readinessLevel": "TRL-9",
+    "specs": [
+      { "name": "Drive Core", "val": "Mark IV Singularity Warp Ring" },
+      { "name": "Fuel Consumption", "val": "Zero (Mass-Inversion Field)" },
+      { "name": "Inertia Cancellation", "val": "99.999% Harmonic Dampening" },
+      { "name": "Hull Composition", "val": "Polarized Metamaterial Lattice" }
+    ],
+    "researchTeam": "Null-G Astrodynamics Group",
+    "clearanceRequired": "LEVEL_4_COMMAND"
+  },
+  {
+    "id": "architecture",
+    "title": "Floating Megastructures & Cloud Citadels",
+    "category": "PLANETARY ENGINEERING · SKYHOOK CITIES",
+    "img": "assets/antigrav_architecture.jpg",
+    "metric1": "14,000 m Levitated Altitude",
+    "metric2": "18.4 Million Metric Tons Lifted",
+    "desc": "Metropolitan platforms and crystal residential citadels anchored directly in the stratosphere. Eliminating the constraints of ground foundations allows architectural geometry unhindered by seismic activity or territorial boundaries, hovering in perpetual zero-g stability.",
+    "status": "DEPLOYED",
+    "readinessLevel": "TRL-8",
+    "specs": [
+      { "name": "Levitation Pylons", "val": "Concentric Graviton Coils" },
+      { "name": "Wind Shear Compensation", "val": "Dynamic Vector Dampeners" },
+      { "name": "Power Source", "val": "Atmospheric Ion Collection Grid" },
+      { "name": "Seismic Vulnerability", "val": "0.00% (Airborne Isolation)" }
+    ],
+    "researchTeam": "Stratospheric Habitat Division",
+    "clearanceRequired": "LEVEL_3_RESIDENT"
+  },
+  {
+    "id": "transportation",
+    "title": "Suborbital Mag-Grav Rapid Transit",
+    "category": "URBAN & INTERCONTINENTAL TRANSIT",
+    "img": "assets/antigrav_transit.jpg",
+    "metric1": "Mach 7.8 Cruising Velocity",
+    "metric2": "32-Minute Trans-Pacific Transit",
+    "desc": "High-capacity vacuum pods glide above luminous magnetic graviton tracks without physical contact or rail friction. Passengers experience silent, vibration-free travel while crossing oceans in minutes without sonic boom or environmental degradation.",
+    "status": "COMMERCIAL_SERVICE",
+    "readinessLevel": "TRL-9",
+    "specs": [
+      { "name": "Track Friction", "val": "0.000 Coefficient" },
+      { "name": "Passenger G-Force", "val": "Regulated to 1.00G Comfort" },
+      { "name": "Acoustic Signature", "val": "< 12 dB (Silent Glide)" },
+      { "name": "Throughput", "val": "240,000 Passengers / Hour" }
+    ],
+    "researchTeam": "Hypersonic Transit Directorate",
+    "clearanceRequired": "LEVEL_1_CITIZEN"
+  },
+  {
+    "id": "reactor-core",
+    "title": "Quantum Graviton Singularity Reactor",
+    "category": "ZERO-POINT ENERGY GENERATION",
+    "img": "assets/antigrav_reactor.jpg",
+    "metric1": "1.21 Terawatt Continuous Output",
+    "metric2": "Micro-Black Hole Containment: 99.9%",
+    "desc": "Harnessing the event horizon of a microscopic quantum singularity safely bound within superconducting magnetic rings. The graviton reactor extracts limitless zero-point vacuum energy while generating the negative-mass fields required for global levitation.",
+    "status": "CONTINUOUS_ONLINE",
+    "readinessLevel": "TRL-9",
+    "specs": [
+      { "name": "Singularity Mass", "val": "1.4 x 10^-8 kg (Micro-Singularity)" },
+      { "name": "Thermal Dissipation", "val": "Sub-Kelvin Cryo-Shielded" },
+      { "name": "Containment Field", "val": "Quad-Redundant Magnetic Rings" },
+      { "name": "Flux Coherence", "val": "99.88% Quantum Stability" }
+    ],
+    "researchTeam": "Quantum Singularity Physics Team",
+    "clearanceRequired": "LEVEL_5_DIRECTOR"
+  },
+  {
+    "id": "bio-synthesis",
+    "title": "Zero-G Molecular & Bio-Synthesis",
+    "category": "ADVANCED PHARMACEUTICALS & CELL REGEN",
+    "img": "assets/antigrav_reactor.jpg",
+    "metric1": "100% Pure Protein Crystallization",
+    "metric2": "Telomere Degradation: Arrested",
+    "desc": "In terrestrial gravity, sedimentation and thermal convection disrupt fragile molecular bonding. Under our localized anti-gravity containment fields, complex macromolecular drugs, artificial organs, and synthetic antibodies assemble with atomic perfection.",
+    "status": "ACTIVE_TRIALS",
+    "readinessLevel": "TRL-7",
+    "specs": [
+      { "name": "Sedimentation Rate", "val": "0.00 mm/s (Zero Drift)" },
+      { "name": "Convective Turbulence", "val": "Eliminated" },
+      { "name": "Bio-Reactor Purity", "val": "99.9999% Grade" },
+      { "name": "Stem Cell Differentiation", "val": "400% Accelerated" }
+    ],
+    "researchTeam": "Microgravity Therapeutics Unit",
+    "clearanceRequired": "LEVEL_3_RESIDENT"
+  },
+  {
+    "id": "kinetic-shields",
+    "title": "Gravitational Kinetic Deflection Shielding",
+    "category": "PLANETARY DEFENSE & DEBRIS DIVERSION",
+    "img": "assets/antigrav_spacecraft.jpg",
+    "metric1": "Orbital Debris Deflection: 100%",
+    "metric2": "40,000 km/h Impact Negation",
+    "desc": "Rather than absorbing kinetic impacts with physical armor, our gravitational deflection array creates a steep repulsive spacetime gradient around installations. Incoming meteorites, orbital junk, and kinetic projectiles are harmlessly curved around the protected volume.",
+    "status": "ACTIVE_DEFENSE",
+    "readinessLevel": "TRL-8",
+    "specs": [
+      { "name": "Response Latency", "val": "0.12 Milliseconds" },
+      { "name": "Deflection Arc", "val": "360° Spherical Shield" },
+      { "name": "Max Kinetic Threshold", "val": "850 Megajoules / Second" },
+      { "name": "Atmospheric Distortion", "val": "Zero Visible Scattering" }
+    ],
+    "researchTeam": "Orbital Defense Coalition",
+    "clearanceRequired": "LEVEL_4_COMMAND"
+  }
+]

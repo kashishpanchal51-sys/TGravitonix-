@@ -1,0 +1,20 @@
+[
+  {
+    "id": "WL-001",
+    "name": "Marcus Aurelius Thorne",
+    "email": "marcus.thorne@astrocapital.com",
+    "tier": "LEVEL_3_RESIDENT",
+    "targetInterest": "Titan Cloud Citadel Penthouse Residence",
+    "queuePosition": 4,
+    "joinedAt": "2026-10-12T14:22:10.000Z"
+  },
+  {
+    "id": "WL-002",
+    "name": "Dr. Sarah Lin",
+    "email": "sarah.lin@bioquantum.de",
+    "tier": "LEVEL_2_FELLOW",
+    "targetInterest": "Zero-G Macromolecular Drug Synthesis Slot",
+    "queuePosition": 5,
+    "joinedAt": "2026-11-01T08:15:33.000Z"
+  }
+]

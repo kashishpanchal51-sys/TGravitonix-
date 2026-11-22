@@ -1,0 +1,26 @@
+[
+  {
+    "id": "USR-ADM-001",
+    "username": "dr_keller",
+    "name": "Dr. Aris Keller",
+    "email": "aris.keller@null-g-labs.org",
+    "role": "DIRECTOR",
+    "clearanceLevel": "LEVEL_5_DIRECTOR",
+    "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80",
+    "division": "Quantum Singularity Division",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "USR-PLT-002",
+    "username": "commander_val",
+    "name": "Commander Valerie Chen",
+    "email": "valerie.chen@null-g-labs.org",
+    "role": "CHIEF_PILOT",
+    "clearanceLevel": "LEVEL_4_COMMAND",
+    "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80",
+    "division": "Metric Warp Flight Operations",
+    "createdAt": "2026-02-15T00:00:00.000Z"
+  }
+]

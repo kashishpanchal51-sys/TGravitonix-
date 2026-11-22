@@ -1,0 +1,22 @@
+{
+  "name": "gravitonix-backend",
+  "version": "1.0.0",
+  "description": "Enterprise-Grade Sci-Fi REST API & Real-Time Telemetry Engine for GRAVITONIX · Null-G Labs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "gravitonix",
+    "anti-gravity",
+    "telemetry",
+    "physics-simulator",
+    "flight-booking",
+    "zero-g",
+    "rest-api",
+    "realtime-sse"
+  ],
+  "author": "Gravitonix Null-G Labs Engineering Division",
+  "license": "MIT"
+}
